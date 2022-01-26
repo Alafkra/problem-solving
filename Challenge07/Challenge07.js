@@ -1,4 +1,4 @@
-"use strict";
+/*"use strict";
 
 // 1) ---------------------
 //
@@ -236,4 +236,4 @@ const classesAvg = (data) => {
     // write your code here
 };
 
-module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
+module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };*/

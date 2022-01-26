@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 const { objLat, cvFormatter, applicationsStatics, classesAvg } = require('./Challenge07');
 
@@ -376,4 +376,4 @@ describe('Challenge07', () => {
         expect(classesAvg(data)).toStrictEqual(received);
 
     })
-})
+})*/
