@@ -32,8 +32,8 @@ const findMax = (arr)=>{
     const sumNums = (arr)=>{
         let sum=0;
         for (let i = 0; i < arr.length; i++) {
-            if(arr[i] >= '0' && arr[i]<='9')
-            sum += arr[i]
+            if(typeof(arr[i]) == "number")
+            sum += arr[i];
         return sum;
     }
     return sum;
@@ -47,8 +47,13 @@ const findMax = (arr)=>{
 //  ['C#', 'JS', 'Ruby','Python' ] ==> ['Python','Ruby','JS','C#']
 // 
 // ------------------------
-function reverseArray(arr) {
-    //write your code here
+const reverseArray = (arr) => {
+    let newArray =[];
+    let arrLength = arr.length;
+    for(let i=0 ; i<arrLength; i++){
+        newArray.push(arr[arrLength-1-i]);
+    }
+    return newArray;
 }
 
-{module.exports = (findMax , sumNums, reverseArray)};
+module.exports = {findMax , sumNums, reverseArray};
