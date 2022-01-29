@@ -68,3 +68,9 @@ const reverseArray = (arr)=>{
 reverseArray(['C#','JS','Ruby','Python'])
 
 module.exports = {findMax , sumNums, reverseArray};
+
+    
+    
+    
+    
+

@@ -1,4 +1,4 @@
-/*"use strict";
+"use strict";
 
 // 1) ---------------------
 //
@@ -20,6 +20,13 @@
 
 const objLat = (obj) => {
     // write your code here
+
+    return `my name is ${
+        obj.firstName.charAt(0).toUpperCase() + obj.firstName.slice(1)
+      } ${obj.lastName} I am ${obj.age} YO, and I love ${obj.hobby}.`;
+
+
+
 };
 
 // 2) ---------------------
@@ -83,9 +90,16 @@ const objLat = (obj) => {
 
 // ------------------------
 const cvFormatter = (arr) => {
-    
-    // write your code here
-};
+    let formatArr = [];
+    let y = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].yearsOfExperience > 1) {
+        formatArr[y] = arr[i];
+        y++;
+      }
+    }
+
+
 
 // 3) ---------------------
 //
@@ -104,12 +118,19 @@ const cvFormatter = (arr) => {
 // and fill it up based on the results
 
 //  Note that:
-//  1- rejectedApplicants are applications that has both the names empty or null and whoever have less than one year of Experience
+//  1- rejectedApplicants are applications that has both the names empty or null and whoever have one year or less of Experience
 
 // ------------------------
-const applicationsStatics = (arr) => {
-    // write your code here
-};
+const applicationsStatics = (arr) => ({
+
+        python_Devs: arr.filter(cv => cv.tech === "Python").length,
+        javaScript_Devs: arr.filter(cv => cv.tech === "JS").length,
+        dotNet_Devs: arr.filter(cv => cv.tech === ".Net").length,
+        java_Devs: arr.filter(cv => cv.tech === "Java").length,
+        totalApplicants: arr.length,
+        rejectedApplicants: arr.filter(cv => cv.yearsOfExperience < 1 || !(cv.firstName && cv.lastName)).length
+});
+    
 
 // 4) ---------------------
 //
@@ -236,4 +257,4 @@ const classesAvg = (data) => {
     // write your code here
 };
 
-module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };*/
+module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
