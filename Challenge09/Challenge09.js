@@ -17,7 +17,9 @@
 
 const arrInc = (arr) => {
     let result = [];
-    // write your code here
+    for (let num of arr) {
+        result.push(parseInt(num) + 10);
+    }
     return result;
 }
 
@@ -31,7 +33,11 @@ const arrInc = (arr) => {
 // 
 // ------------------------
 const roundDecimals = (arr) => {
-    // write your code here
+    let result = [];
+    for (let num of arr) {
+        result.push(Math.round(parseFloat(num)));
+    }
+    return result;
 }
 
 // 3) ---------------------
@@ -45,25 +51,25 @@ const roundDecimals = (arr) => {
 //         name: "Robert",
 //         section: "Transport",
 //         workHours: 8,
-//         salary: "3000$"
+//         salaries: "3000$"
 //     },
 //     {
 //         name: "Richard",
 //         section: "HR",
 //         workHours: 6,
-//         salary: "4000$"
+//         salaries: "4000$"
 //     },
 //     {
 //         name: "Christopher",
 //         section: "Production",
-//         workHours: 10,
-//         salary: "4500$"
+//         workHours: 10
+//         salaries: "4500$"
 //     },
 //     {
 //         name: "Andrew",
 //         section: "HouseKeeping",
 //         workHours: 9,
-//         salary: "3200$"
+//         salaries: "3200$"
 //     }
 // ]
 // 
@@ -74,32 +80,40 @@ const roundDecimals = (arr) => {
 //         name: "Robert",
 //         section: "Transport",
 //         workHours: 8,
-//         salary: "3050$"
+//         salaries: "3050$"
 //     },
 //     {
 //         name: "Richard",
 //         section: "HR",
 //         workHours: 6,
-//         salary: "4050$"
+//         salaries: "4050$"
 //     },
 //     {
 //         name: "Christopher",
 //         section: "Production",
 //         workHours: 10
-//         salary: "4600$"
+//         salaries: "4600$"
 //     },
 //     {
 //         name: "Andrew",
 //         section: "HouseKeeping",
 //         workHours: 9,
-//         salary: "3300$"
+//         salaries: "3300$"
 //     }
 // ]
 //
 
 // ------------------------
 const employeesBonus = (arr) => {
-    // write your code here
+    let result = arr;
+    for (let personObj of result) {
+        if (personObj.workHours > 8) {
+            personObj.salaries = `${(parseInt(personObj.salaries.slice(0, -1)) + 100).toString()}$`;
+        } else {
+            personObj.salaries = `${(parseInt(personObj.salaries.slice(0, -1)) + 50).toString()}$`
+        }
+    }
+    return result;
 }
 
 // 4) ---------------------
@@ -116,8 +130,6 @@ const employeesBonus = (arr) => {
 // 
 // ==> 200
 // ------------------------
-const mostExpensive = (budget, mouseArray, keyBoardArray) => {
-    // write your code here
-}
 
-module.exports = { arrInc, roundDecimals, employeesBonus, mostExpensive };
+
+module.exports = { arrInc, roundDecimals, employeesBonus };
