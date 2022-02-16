@@ -19,14 +19,9 @@
 // ------------------------
 
 const objLat = (obj) => {
-    // write your code here
-
-    return `my name is ${
-        obj.firstName.charAt(0).toUpperCase() + obj.firstName.slice(1)
-      } ${obj.lastName} I am ${obj.age} YO, and I love ${obj.hobby}.`;
-
-
-
+    let F_Name = obj.firstName.charAt(0).toUpperCase() + obj.firstName.slice(1);
+    let L_Name = obj.lastName.charAt(0).toUpperCase() + obj.lastName.slice(1);
+    return `my name is ${F_Name} ${L_Name} I am ${obj.age} YO, and I love ${obj.hobby}.`;
 };
 
 // 2) ---------------------
@@ -90,16 +85,26 @@ const objLat = (obj) => {
 
 // ------------------------
 const cvFormatter = (arr) => {
-    let formatArr = [];
-    let y = 0;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].yearsOfExperience > 1) {
-        formatArr[y] = arr[i];
-        y++;
-      }
+    let arrLength = arr.length;
+    let newArr = [];
+    for (let i = 0; i < arrLength; i++) {
+        if (arr[i].yearsOfExperience > 1) {
+            let newObj = {};
+            let first_N = "";
+            let last_N = "";
+            if (arr[i].firstName != null) {
+                first_N = arr[i].firstName;
+            }
+            if (arr[i].lastName != null) {
+                last_N = " " + arr[i].lastName;
+            }
+            newObj["fullName"] = first_N + last_N;
+            newObj["tech"] = arr[i].tech;
+            newArr.push(newObj);
+        }
     }
-
-
+    return newArr;
+};
 
 // 3) ---------------------
 //
@@ -118,19 +123,10 @@ const cvFormatter = (arr) => {
 // and fill it up based on the results
 
 //  Note that:
-//  1- rejectedApplicants are applications that has both the names empty or null and whoever have one year or less of Experience
+//  1- rejectedApplicants are applications that has both the names empty or null and whoever have less than one year of Experience
 
 // ------------------------
-const applicationsStatics = (arr) => ({
 
-        python_Devs: arr.filter(cv => cv.tech === "Python").length,
-        javaScript_Devs: arr.filter(cv => cv.tech === "JS").length,
-        dotNet_Devs: arr.filter(cv => cv.tech === ".Net").length,
-        java_Devs: arr.filter(cv => cv.tech === "Java").length,
-        totalApplicants: arr.length,
-        rejectedApplicants: arr.filter(cv => cv.yearsOfExperience < 1 || !(cv.firstName && cv.lastName)).length
-});
-    
 
 // 4) ---------------------
 //
@@ -254,7 +250,14 @@ let data = {
 //  2- You need to round the average to the nearest lower number 
 
 const classesAvg = (data) => {
-    // write your code here
+    const average = (arr) => arr.reduce((a,b) => a + b, 0) / arr.length;
+    for (let grade = 0; grade < data.grades.length; grade++) {
+        for (let classs = 0; classs < data.grades[grade].classes.length; classs++) {
+            let ave = average(data.grades[grade].classes[classs].classScores);
+            data.grades[grade].classes[classs].avg = Math.floor(ave);
+        }
+    }
+    return data
 };
 
-module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
+module.exports = { objLat, cvFormatter,classesAvg };
